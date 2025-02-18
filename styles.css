@@ -295,4 +295,89 @@ body {
     transition: opacity 1s ease;
     z-index: 1000;
     pointer-events: none;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .nav-button {
+        width: 70px;
+        height: 70px;
+        font-size: 36px;
+    }
+
+    .forward {
+        top: 30px;
+    }
+
+    .backward {
+        bottom: 30px;
+    }
+
+    .left {
+        left: 30px;
+    }
+
+    .right {
+        right: 30px;
+    }
+
+    .song-menu {
+        width: 90%;
+        max-width: 400px;
+        padding: 15px;
+    }
+
+    .song-info {
+        font-size: 14px;
+    }
+
+    .guidance-text {
+        font-size: 16px;
+        padding: 15px 20px;
+        bottom: 120px;
+    }
+
+    .main-menu .menu-content h1 {
+        font-size: 2.5em;
+    }
+
+    .main-menu .menu-content p {
+        font-size: 1.2em;
+    }
+
+    .start-button {
+        padding: 0.8em 1.6em;
+        font-size: 1.1em;
+    }
+}
+
+/* Small phones */
+@media (max-width: 380px) {
+    .nav-button {
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
+    }
+
+    .forward {
+        top: 20px;
+    }
+
+    .backward {
+        bottom: 20px;
+    }
+
+    .left {
+        left: 20px;
+    }
+
+    .right {
+        right: 20px;
+    }
+
+    .guidance-text {
+        font-size: 14px;
+        padding: 12px 16px;
+        bottom: 100px;
+    }
 } 
