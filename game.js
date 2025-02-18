@@ -794,7 +794,7 @@ function playAmbientSounds(soundsConfig) {
     // Clean up existing ambient sounds
     cleanupAmbientSounds();
 
-    if (!soundsConfig) return;
+    if (!soundsConfig || !gameState.audioInitialized) return;
 
     // Create and play each ambient sound
     soundsConfig.forEach(config => {
@@ -804,7 +804,15 @@ function playAmbientSounds(soundsConfig) {
         
         // Wait for the audio to be loaded before playing
         ambient.addEventListener('loadeddata', () => {
-            ambient.play();
+            // Create a promise for playing
+            const playPromise = ambient.play();
+            
+            // Handle play() promise
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Audio playback failed:", error);
+                });
+            }
         });
         
         gameState.ambientSounds.push(ambient);
@@ -831,16 +839,37 @@ function hideSongMenu() {
 function initializeAudio() {
     if (gameState.audioInitialized) return;
     
-    // Create a temporary audio context to initialize audio
+    // Create a temporary audio context
     const tempContext = new (window.AudioContext || window.webkitAudioContext)();
-    tempContext.resume().then(() => {
-        gameState.audioInitialized = true;
-        // Start the game with ambient sounds
-        const currentScene = gameState.scenes[gameState.currentScene];
-        if (currentScene.ambientSounds) {
-            playAmbientSounds(currentScene.ambientSounds);
-        }
-    });
+    
+    // Show audio permission overlay on mobile devices
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        const audioPermission = document.getElementById('audio-permission');
+        audioPermission.classList.add('visible');
+        
+        // Handle touch to start audio
+        audioPermission.addEventListener('click', function() {
+            tempContext.resume().then(() => {
+                audioPermission.classList.remove('visible');
+                gameState.audioInitialized = true;
+                // Start the game with ambient sounds
+                const currentScene = gameState.scenes[gameState.currentScene];
+                if (currentScene.ambientSounds) {
+                    playAmbientSounds(currentScene.ambientSounds);
+                }
+            });
+        });
+    } else {
+        // On desktop, initialize directly
+        tempContext.resume().then(() => {
+            gameState.audioInitialized = true;
+            // Start the game with ambient sounds
+            const currentScene = gameState.scenes[gameState.currentScene];
+            if (currentScene.ambientSounds) {
+                playAmbientSounds(currentScene.ambientSounds);
+            }
+        });
+    }
 }
 
 // Start game function

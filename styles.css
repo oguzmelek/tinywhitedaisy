@@ -297,6 +297,41 @@ body {
     pointer-events: none;
 }
 
+.audio-permission {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    cursor: pointer;
+}
+
+.audio-permission.visible {
+    display: flex;
+}
+
+.audio-content {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.audio-content p {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.audio-note {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-top: 1em;
+}
+
 /* Mobile Optimization */
 @media (max-width: 768px) {
     .nav-button {
@@ -306,19 +341,20 @@ body {
     }
 
     .forward {
-        top: 30px;
+        top: 40px;
     }
 
     .backward {
-        bottom: 30px;
+        bottom: 40px;
+        margin-bottom: env(safe-area-inset-bottom, 20px);
     }
 
     .left {
-        left: 30px;
+        left: 40px;
     }
 
     .right {
-        right: 30px;
+        right: 40px;
     }
 
     .song-menu {
@@ -334,7 +370,7 @@ body {
     .guidance-text {
         font-size: 16px;
         padding: 15px 20px;
-        bottom: 120px;
+        bottom: 140px;
     }
 
     .main-menu .menu-content h1 {
@@ -360,24 +396,25 @@ body {
     }
 
     .forward {
-        top: 20px;
+        top: 30px;
     }
 
     .backward {
-        bottom: 20px;
+        bottom: 30px;
+        margin-bottom: env(safe-area-inset-bottom, 15px);
     }
 
     .left {
-        left: 20px;
+        left: 30px;
     }
 
     .right {
-        right: 20px;
+        right: 30px;
     }
 
     .guidance-text {
         font-size: 14px;
         padding: 12px 16px;
-        bottom: 100px;
+        bottom: 120px;
     }
 } 
