@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tiny White Daisy - An interactive journey through memories, music, and nature. Experience a peaceful adventure with ambient sounds and progressive rock classics.">
+    <meta name="keywords" content="interactive story, ambient sounds, progressive rock, peaceful game, artistic experience">
+    <meta name="author" content="Tiny White Daisy">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Tiny White Daisy - Interactive Adventure">
+    <meta property="og:description" content="Take a peaceful journey through nature, memories, and music in this interactive experience.">
+    <meta property="og:image" content="https://tinywhitedaisy.com/images/social-preview.jpg">
+    <meta property="og:url" content="https://tinywhitedaisy.com">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tiny White Daisy - Interactive Adventure">
+    <meta name="twitter:description" content="Take a peaceful journey through nature, memories, and music in this interactive experience.">
+    <meta name="twitter:image" content="https://tinywhitedaisy.com/images/social-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    
+    <title>Tiny White Daisy - Interactive Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="main-menu" class="main-menu">
+        <div class="menu-content">
+            <h1>Tiny White Daisy</h1>
+            <p>An Interactive Adventure</p>
+            <button id="start-game" class="start-button">Begin Journey</button>
+        </div>
+    </div>
+    <div class="game-container">
+        <div class="scene-container">
+            <img id="scene-image" src="images/grasspath-001.jpg" alt="Game Scene">
+            <video id="scene-video" playsinline muted>
+                <source src="" type="video/mp4">
+            </video>
+            <div id="song-menu" class="song-menu">
+                <!-- Songs will be dynamically added here -->
+            </div>
+            <button class="nav-button forward" onclick="moveForward()">↑</button>
+            <button class="nav-button backward" onclick="moveBackward()">↓</button>
+            <button class="nav-button left" onclick="moveLeft()">←</button>
+            <button class="nav-button right" onclick="moveRight()">→</button>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html> 
